@@ -1,3 +1,4 @@
+import csv
 class Email:
     __idC = ""
     __dom = ""
@@ -10,7 +11,7 @@ class Email:
         self.__td = td
         self.__cont = cont
     def __str__(self):
-        return f'Cuenta: {self.__idC}\nDominio: {self.__dom}\nTipo: {self.__td}\nContraseña: {self.__cont}' 
+        return f'Cuenta: {self.__idC}\nDominio: {self.__dom}\nTipo: {self.__td}\nContraseña: {self.__cont}\n***********' 
 
     def retornaEmail(self):
         return f'{self.__idC}@{self.__dom}{self.__td}'
@@ -43,9 +44,36 @@ class Email:
 
         return f'**Contraseña actualizada**\n  {self.__cont}'     
     
+
+
+class ManejadorEmail:
+    __lista = []
+
+    def __init__(self):
+        self.__lista = []
+    def agregarEmail(self, unaCuenta):
+        self.__lista.append(unaCuenta)
+
+    def testEmails(self):
+        archi = open('emails.csv')
+        reader = csv.reader(archi, delimiter=";")
+        for fila in reader:
+            correo = fila[0]
+            i = correo.index("@")
+            cuenta = correo[:i]
+            xi = correo.index(".")
+            dom= correo[i+1:xi]
+            td= correo[xi:]
+            unaCuenta = Email(cuenta, dom, td, 1234)
+            self.agregarEmail(unaCuenta)
+        archi.close()
         
-        
-        
+    def __str__(self):
+        s = ' '
+        for fila in self.__lista:
+            s += str(fila) + '\n'
+        return s
+
         
         
 

@@ -5,7 +5,7 @@ Created on Tue Apr 25 19:52:33 2023
 @author: Facu
 """
 from claseViajeroFrecuente import ViajeroFrecuente
-
+import os
 from claseViajeroFrecuente import Manejador
 
 if __name__ == '__main__':
@@ -20,6 +20,7 @@ if __name__ == '__main__':
     else:
         print("1-Consultar cantidad de millas\n2-Acumular millas\n3-Cajear millas")
         op=int(input("Opcion:"))
+        print("*" *20)
         while(op!=0):
             if  op == 1:
                 mile=mv.getOp1(i)
@@ -36,6 +37,6 @@ if __name__ == '__main__':
                 print("Millas Anteriores: ", mv.getMillas(i))
                 mile =mv.getOp3(i, mCanje)
             print("*"*20)
-            op=int(input("Opcion  '0' para salir:"))   
+            op=int(input("Opcion o '0' para salir:"))   
             
             
