@@ -24,3 +24,5 @@ if __name__ == '__main__':
     mE = ManejadorEmail()
     mE.testEmails()
     print(mE)
+    dom = input("Dominio: ")
+    print(mE.getCantObj(dom))

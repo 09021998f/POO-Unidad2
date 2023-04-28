@@ -1,4 +1,5 @@
 import csv
+import re
 class Email:
     __idC = ""
     __dom = ""
@@ -59,20 +60,44 @@ class ManejadorEmail:
         reader = csv.reader(archi, delimiter=";")
         for fila in reader:
             correo = fila[0]
-            i = correo.index("@")
-            cuenta = correo[:i]
-            xi = correo.index(".")
-            dom= correo[i+1:xi]
-            td= correo[xi:]
-            unaCuenta = Email(cuenta, dom, td, 1234)
-            self.agregarEmail(unaCuenta)
+            if(self.validarCorreo(correo)):
+                i = correo.index("@")
+                cuenta = correo[:i]
+                xi = correo.index(".")
+                dom= correo[i+1:xi]
+                td= correo[xi:]
+                unaCuenta = Email(cuenta, dom, td, 1234)
+                self.agregarEmail(unaCuenta)
         archi.close()
+
+    def validarCorreo(self, correo):
+        patron = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    # Validar el correo electrónico
+        if re.match(patron, correo) and '..' not in correo:
+            return True
+        else:
+            return False
+
+
         
     def __str__(self):
         s = ' '
         for fila in self.__lista:
             s += str(fila) + '\n'
         return s
+    
+    def getCantObj(self, dom):
+        i=0
+        cont = 0
+        band = True
+        while  i < len(self.__lista):
+            if(self.__lista[i].getDominio()==dom):
+                cont = cont + 1
+                i = i+1
+            else:
+                i = i+1
+        return cont
+
 
         
         
