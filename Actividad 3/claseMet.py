@@ -137,8 +137,31 @@ class Manejador:
             print(f'Presion Atmosferica minimaa del dia {dia+1}: {min}atm a las {hora}:00')
             min = 999999
 
+    def op2(self):
+        acum=0
+        for i in range(24):
+           acum +=self.__regMet[0][i].getTemp() + self.__regMet[1][i].getTemp()
+           hora =  self.__regMet[0][i].getHora()
+           prom = acum /2
+           print("Mes 1")
+           print(f'Hora: {hora}:00\nTemperatura promedio: {prom}')
+           acum = 0     
+
+    def op3(self):
+        dia = int(input("Dia: "))
+        print("| Hora |Temperatura| Humedad | Presion Atm")
+        for i in range(len(self.__regMet[dia-1])):
+            hora = self.__regMet[dia-1][i].getHora()
+            temp = self.__regMet[dia-1][i].getTemp()
+            hum = self.__regMet[dia-1][i].getHumedad()
+            ps = self.__regMet[dia-1][i].getPresion()
+            print(f'  {hora}       {temp}      {hum}      {ps}')
+
+
     def menu(self):
         print("1- Mostrar punto 1")
+        print("1- Mostrar punto 2")
+        print("3- Mostrar punto 3")
         print("0-Salir")
         print()
         op = int(input("Opcion: "))
@@ -158,8 +181,10 @@ class Manejador:
             self.getMaximoPresion()
             print("*"*30)
             self.getMinimoPresion()
-             
-
+        elif(op==2):
+            self.op2()
+        elif(op == 3):
+            self.op3()
 
     
     

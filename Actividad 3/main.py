@@ -12,7 +12,7 @@ if __name__ == '__main__':
     
     mr = Manejador()
     mr.testRegMet()
-    print(mr)
+    #print(mr)
     mr.menu()
 
 
