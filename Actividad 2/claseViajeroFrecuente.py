@@ -46,8 +46,8 @@ class ViajeroFrecuente:
        
         return f'Numero de Viajero: {self.__numViajero}\nDNI: {self.__dni}\nNombre: {self.__nombre}\nApellido: {self.__apellido}\nMillas Acumuladas: {self.__millasAcumuladas}\n******* '
     
-    def __lt__(self, otro):
-        return self.__numViajero < otro.__numViajero
+    #def __gt__(self, otro):
+     #   return self.__millasAcumuladas > otro.__millasAcumuladas
 
 
 class Manejador:
@@ -111,4 +111,12 @@ class Manejador:
     
     def getMillas(self , i):
         return self.__lista[i].getTotalMillas()
+    
+
+    #Ejercicio 6
+
+    def determinaMayor(self):
+        for i in range(len(self.__lista)):
+            self.__lista[i].getTotalMillas() > self.__lista[i+1].getTotalMillas() 
         
+  

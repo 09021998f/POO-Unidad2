@@ -89,13 +89,10 @@ class ManejadorEmail:
     def getCantObj(self, dom):
         i=0
         cont = 0
-        band = True
-        while  i < len(self.__lista):
+        for i in range(len(self.__lista)):
             if(self.__lista[i].getDominio()==dom):
                 cont = cont + 1
-                i = i+1
-            else:
-                i = i+1
+        
         return cont
 
 
