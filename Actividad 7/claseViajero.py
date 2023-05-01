@@ -30,8 +30,14 @@ class ViajeroFrecuente:
         nueva_millas = self.__millasAcumuladas - otrasMillas
         return ViajeroFrecuente(self.__numViajero, self.__dni, self.__nombre, self.__apellido, nueva_millas)
 
-    
-     
+    def __eq__(self, otro):
+        if isinstance(otro, int):
+            return self.__millasAcumuladas == otro
+        elif isinstance(otro, ViajeroFrecuente):
+            return self.__millasAcumuladas == otro.__millasAcumuladas
+        else:
+            return False
+
     def canjearMillas(self,millasACanjear):
         if(millasACanjear < self.__millasAcumuladas):
             print("Millas canjeadas: ", millasACanjear)
