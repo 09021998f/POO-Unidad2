@@ -46,7 +46,7 @@ class ManejadorAlumnos:
         next(reader)
         i=0
         for fila in reader:
-            alumno = Alumno(int(fila[0]), fila[1], fila[2], fila[3], fila[4])
+            alumno = Alumno(int(int(fila[0])), fila[1], fila[2], fila[3], fila[4])
             self.__arreglo[i] = alumno
             i=i+1
             if i == 8:
@@ -56,6 +56,16 @@ class ManejadorAlumnos:
     # Imprimimos los datos de los alumnos
         for alumno in self.__arreglo:
             print(f"DNI: {alumno._Alumno__dni} | Apellido: {alumno._Alumno__apellido} | Nombre: {alumno._Alumno__nombre} | Carrera: {alumno._Alumno__carrera} | Año que cursa: {alumno._Alumno__añoQueCursa}")
+    
+    def getInfo(self,dni):
+        band = True
+        i=0
+        while band and i < len(self.__arreglo):
+            if(self.__arreglo[i]._Alumno__dni == dni):
+                print(f'Nombre:{i._Alumno__Apellido}, {i._Alumno__nombre} Año: {i._Alumno__añoQueCursa}')
+                band = False
+            else:
+                i=i+1
 
 class Materias:
     class Materias:
@@ -86,6 +96,8 @@ class Materias:
     
     def getFecha(self):
         return self.__fecha
+    def getMat(self):
+        return self.__materia
         
 
 class ManejadorMaterias:
@@ -131,7 +143,24 @@ class ManejadorMaterias:
         prom = acum / cont
         return prom
     
-    def getInfo(self, mat):
+    def getDni(self,mat):
+        dni = []
         for i in range(len(self.__lista)):
-            if(mat == self.__lista[i].get == "P"):
-            
+            if(mat == self.__lista[i].getMat().lower() and self.__lista[i].getAprob() == "P" ):
+                dni.append(self.__lista[i].getDni())
+                print(f"DNI:{self.__lista[i].getDni()}|Materia:{self.__lista[i].getMat()}|Fecha:{self.__lista[i].getFecha()}" )
+                i+=1    
+            else:
+                i+=1
+        return dni
+    
+    def getInfo(self, mat):
+        materia = []
+        for i in range(len(self.__lista)):
+            if(mat == self.__lista[i].getMat().lower() and self.__lista[i].getAprob() == "P" ):
+                materia.append([self.__lista[i].getDni(),self.__lista[i].getMat(),self.__lista[i].getFecha()])
+                
+                i+=1
+            else:
+                i+=1
+        return materia

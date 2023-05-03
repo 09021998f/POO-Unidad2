@@ -14,3 +14,12 @@ if __name__ == '__main__':
     if(op==1):
         dni = int(input("DNI:"))
         print(f'Promedio: {mm.getPromedio(dni)}')
+    elif op == 2:
+        mat = input("Ingrese materia: ")
+        materias = mm.getInfo(mat.lower())
+        """
+         Hecho hasta aca
+         materias guarda los datos obtenitos de mm.getInfo() seguir viendo
+         como usar materias para obtener los datos del arreglo numpy de alumnos
+         """
+        
