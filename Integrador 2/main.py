@@ -12,14 +12,20 @@ if __name__ == '__main__':
     op = int(input("Opcion:"))
 
     if(op==1):
+        
         dni = int(input("DNI:"))
         print(f'Promedio: {mm.getPromedio(dni)}')
     elif op == 2:
+        alumnosAprobados=[]
+        dniAprobados = []
         mat = input("Ingrese materia: ")
         materias = mm.getInfo(mat.lower())
-        """
-         Hecho hasta aca
-         materias guarda los datos obtenitos de mm.getInfo() seguir viendo
-         como usar materias para obtener los datos del arreglo numpy de alumnos
-         """
+        for i in range(len(materias)):
+            dniAprobados.append(materias[i][0])
+        infoAlum = ma.getInfo(dniAprobados)
+        print(infoAlum)
+        print(materias)
+        
+        
+        
         

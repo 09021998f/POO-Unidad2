@@ -60,12 +60,18 @@ class ManejadorAlumnos:
     def getInfo(self,dni):
         band = True
         i=0
-        while band and i < len(self.__arreglo):
-            if(self.__arreglo[i]._Alumno__dni == dni):
-                print(f'Nombre:{i._Alumno__Apellido}, {i._Alumno__nombre} Año: {i._Alumno__añoQueCursa}')
-                band = False
-            else:
-                i=i+1
+        j=0
+        datosAlumnos=[]
+        for j in range(len(dni)):
+            while band and i < len(self.__arreglo):
+                if(self.__arreglo[i]._Alumno__dni == dni[j]):
+                    datosAlumnos.append([self.__arreglo[i]._Alumno__apellido,self.__arreglo[i]._Alumno__nombre,self.__arreglo[i]._Alumno__añoQueCursa])
+                    band = False
+                else:
+                    i=i+1
+            band = True
+            i=0
+        return datosAlumnos        
 
 class Materias:
     class Materias:
@@ -143,16 +149,6 @@ class ManejadorMaterias:
         prom = acum / cont
         return prom
     
-    def getDni(self,mat):
-        dni = []
-        for i in range(len(self.__lista)):
-            if(mat == self.__lista[i].getMat().lower() and self.__lista[i].getAprob() == "P" ):
-                dni.append(self.__lista[i].getDni())
-                print(f"DNI:{self.__lista[i].getDni()}|Materia:{self.__lista[i].getMat()}|Fecha:{self.__lista[i].getFecha()}" )
-                i+=1    
-            else:
-                i+=1
-        return dni
     
     def getInfo(self, mat):
         materia = []
