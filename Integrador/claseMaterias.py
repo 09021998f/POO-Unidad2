@@ -22,6 +22,9 @@ class Materias:
     def getDni(self):
         return self.__dni
     
+    def getMat(self):
+        return self.__materia
+    
     def getAprob(self):
         return self.__aprobacion
     
@@ -67,11 +70,24 @@ class ManejadorMaterias:
                 i+=1
             else:
                 i+=1
-
-        prom = acum / cont
-        return prom
+        if(acum != 0):
+            prom = acum / cont
+            return prom
+        
+        
     
     def getInfo(self, mat):
+        materia = [None]
         for i in range(len(self.__lista)):
-            if(mat == self.__lista[i].get == "P"):
+            if(mat == self.__lista[i].getMat().lower() and self.__lista[i].getAprob() == "P" ):
+                if materia[0] == None:
+                    materia = []
+                
+                materia.append([self.__lista[i].getDni(),self.__lista[i].getMat(),self.__lista[i].getFecha()])
+                
+                i+=1
+            else:
+                i+=1
+        
+        return materia
                 
